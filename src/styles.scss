@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+	font-family: myNewFont; /* Имя   шрифта */
+	src: url(/assets/fonts/font-2.ttf); /* Путь к файлу со шрифтом */
+}
+
+* {
+	font-family: myNewFont;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep.row {
+	margin: 0;
+
+}

@@ -1,0 +1,49 @@
+:host {
+	--toolbar-height: 64px;
+	display: block;
+	height: 100%;
+}
+
+.controls {
+
+	button {
+		margin-right: 10px;
+	}
+}
+
+.time-inputs {
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	margin-top: 16px;
+}
+
+.toolbar {
+	height: 64px;
+}
+
+.preview-window {
+	border: 1px solid gray;
+	border-top-width: 30px;
+	border-radius: 5px;
+	width: 500px;
+	height: 300px;
+
+	&__container {
+		margin-top: 16px;
+	}
+}
+
+.container {
+	&__wrapper {
+		padding: 16px;
+	}
+}
+
+.mat-drawer-container {
+	height: calc(100% - 64px)
+}
+
+mat-drawer {
+	width: 40%;
+}

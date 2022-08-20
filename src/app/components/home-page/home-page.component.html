@@ -1,0 +1,97 @@
+<mat-toolbar class="toolbar">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+            aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Timer stopwatch</span>
+</mat-toolbar>
+
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="over">
+
+    </mat-drawer>
+
+
+    <div class="container__wrapper">
+        <div class="row">
+            <div class="col-md-12 controls">
+                <button mat-raised-button color="primary" [disabled]="isStarted" (click)="onStartTimer()">Start</button>
+                <button mat-raised-button color="primary" [disabled]="!isStarted" (click)="onResetTimer()">Reset
+                </button>
+                <button mat-raised-button color="primary" [disabled]="isPaused || !isStarted" (click)="onPauseTimer()">
+                    Pause
+                </button>
+                <button mat-raised-button color="accent" [disabled]="!timerWindow || !!previewFrame"
+                        (click)="onCloseWindow()">Close
+                </button>
+                <button mat-raised-button [color]="showPreview ? 'warn':'primary'"
+                        (click)="onShowPreview()">{{showPreview ? 'Close Preview' : 'Show preview'}}</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 time-inputs">
+
+                <mat-form-field class="input-el" appearance="fill">
+                    <mat-label>Seconds</mat-label>
+                    <input matInput type="number" [formControl]="timeSec">
+                    <button *ngIf="timeSec.value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="timeSec.reset(0)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="input-el" appearance="fill">
+                    <mat-label>Minutes</mat-label>
+                    <input matInput type="number" [formControl]="timeMin">
+                    <button *ngIf="timeMin.value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="timeMin.reset(0)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+
+                <mat-form-field class="input-el" appearance="fill">
+                    <mat-label>Hours</mat-label>
+                    <input matInput type="number" [formControl]="timeHour">
+                    <button *ngIf="timeHour.value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="timeHour.reset(0)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="input-el" appearance="fill">
+                    <mat-label>Frequency</mat-label>
+                    <input matInput type="number" [formControl]="timeFrequency">
+                    <button *ngIf="timeFrequency.value !== 1000" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="timeFrequency.reset(1000)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-8 preview-window__container">
+                <div *ngIf="showPreview" class="preview-window">
+                    <iframe src="http://localhost/timer?width=500&height=300" width="500"
+                            height="300"
+                            (load)="onLoadPreview()"
+                            #previewFrame
+                    ></iframe>
+                </div>
+
+                <div *ngIf="timerWindow">
+                  <button (click)="onResetPosition()">Reset position</button>
+                  <button (click)="onChangePosition('left')">left</button>
+                  <button (click)="onChangePosition('right')">rigth</button>
+                  <button (click)="onChangePosition('up')">up</button>
+                  <button (click)="onChangePosition('down')">down</button>
+                  <button (click)="onChangeSize('increase')">size +</button>
+                  <button (click)="onChangeSize('decrease')">size -</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</mat-drawer-container>
+

@@ -27,7 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": []
           },
@@ -36,8 +38,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "100mb",
+                  "maximumError": "100mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -71,7 +73,9 @@
               "browserTarget": "timer-stopwatch:build:production"
             },
             "development": {
-              "browserTarget": "timer-stopwatch:build:development"
+              "browserTarget": "timer-stopwatch:build:development",
+              "port": 80,
+              "host": "0.0.0.0"
             }
           },
           "defaultConfiguration": "development"
@@ -94,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
